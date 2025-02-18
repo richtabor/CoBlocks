@@ -154,6 +154,8 @@
 								img.attributes.src.value;
 						}
 
+						imagePreloader[ `img-${ imgIndex }` ].alt = img.attributes.alt?.value || '';
+
 						imagePreloader[ `img-${ imgIndex }` ][ 'data-caption' ] =
 								( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
 									? getImageCaption( images[ imgIndex ] ) : '';
@@ -177,6 +179,7 @@
 			openLightbox();
 			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
+			image.alt = imagePreloader[ `img-${ index }` ].alt;
 			caption.innerHTML = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
 			counter.textContent = `${ ( index + 1 ) } / ${ images.length }`;
 		}
